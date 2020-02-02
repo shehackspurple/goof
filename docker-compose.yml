@@ -1,7 +1,9 @@
 version: "3"
 services:
     goof-mongo:
+    build: .
     container_name: goof-mongo
-    image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - ./db:/data/db
