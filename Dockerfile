@@ -10,7 +10,7 @@ FROM ubuntu
 # Install MongoDB.
 RUN \
   apt-get update && \
-  apt-get install -y gnupg
+  apt-get install -y gnupg ca-certificates
 
 RUN \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 
