@@ -5,16 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        mongodb-version: ["4.0", "4.2"] 
-    name: Start MongoDB ${{ matrix.mongodb-version }}
+        mongodb-version: ["4.2"] 
+    name: "docker-compose up"
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        with:
-          name: myDocker/repository
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Start MongoDB As Docker
-        uses: ./
-        with:
-          mongoDBVersion: ${{ matrix.mongodb-version }}
+      - name: start mongodb 
+        run: docker-compose up -d 
+#      - name: Start MongoDB As Docker
+#        uses: ./
+#        with:
+#          mongoDBVersion: ${{ matrix.mongodb-version }}

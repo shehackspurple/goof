@@ -1,7 +1,21 @@
-version: "3"
+version: "3.7"
 services:
     goof-mongo:
-    container_name: goof-mongo
-    image: mongo
-    ports:
-      - "27017:27017"
+      build: 
+        context: .
+      container_name: goof-mongo
+      ports:
+        - "27017:27017"
+      volumes:
+        - ./db:/data/db
+    goof:
+      build: 
+        context: .
+        dockerfile: Dockerfile.goof
+      ports:
+        - "3001:3001"
+      environment:
+        - "DOCKER=1"
+        - "PORT=3001"
+        - "HOST=0.0.0.0"
+        - "GOOF_HOST=goof"
